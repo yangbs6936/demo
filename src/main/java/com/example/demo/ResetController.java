@@ -2,18 +2,51 @@ package com.example.demo;
 
 
 import com.example.demo.entity.OAuthUser;
+import com.example.demo.entity.TestYang;
 import com.example.demo.repository.OAuthUserRepository;
+import com.example.demo.repository.TestYangRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 public class ResetController {
 
     @Autowired
     private OAuthUserRepository oAuthUserRepository;
+
+    private static Long count = 301L;
+
+    @Autowired
+    private TestYangRepository testYangRepository;
+
+    @Autowired
+    private JDBCTemplate jdbcTemplate;
+
+    @RequestMapping("yang")
+    public String test() {
+        testYangRepository.findByaID("");
+        jdbcTemplate.getResult();
+        return "success";
+    }
+
+    @RequestMapping("yang1")
+    public String test1() {
+        TestYang testYang = new TestYang();
+        testYang.setId(count++);
+        testYang.setName("");
+        testYang.setArea("faefawef");
+        testYangRepository.save(testYang);
+        return "success";
+    }
+
+
 
     @RequestMapping("")
     public Object home() {
