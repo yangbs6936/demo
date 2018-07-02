@@ -31,8 +31,8 @@ public class ResetController {
 
     @RequestMapping("yang")
     public String test() {
-        testYangRepository.findByaID("");
-        jdbcTemplate.getResult();
+//        testYangRepository.findByaID("");
+        jdbcTemplate.getList();
         return "success";
     }
 
